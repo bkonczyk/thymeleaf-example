@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -42,7 +43,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/save-employee")
-    public String saveEmployee(@ModelAttribute CreateEmployeeRequest employee) {
+    public String saveEmployee(@Valid @ModelAttribute CreateEmployeeRequest employee) {
         service.saveEmployee(employee);
         return "redirect:/";
     }
