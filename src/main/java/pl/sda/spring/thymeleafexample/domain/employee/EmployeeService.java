@@ -13,6 +13,7 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepository repository;
+    private final EmployeeMapper mapper;
 
     List<Employee> getAll() {
         return repository.findAll();
@@ -22,7 +23,8 @@ public class EmployeeService {
         return repository.findById(id).orElse(new Employee());
     }
 
-    void saveEmployee(Employee employee) {
+    void saveEmployee(CreateEmployeeRequest request) {
+        Employee employee = mapper.fromRequest(request);
         repository.save(employee);
     }
 
