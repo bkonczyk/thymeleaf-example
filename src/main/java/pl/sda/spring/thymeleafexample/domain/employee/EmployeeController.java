@@ -1,6 +1,7 @@
 package pl.sda.spring.thymeleafexample.domain.employee;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +48,19 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable Long id) {
         service.deleteEmployee(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page<Employee> page = service.findPaginated(pageNo, pageSize);
+        List<Employee> employees = page.getContent();
+
+        model.addAttribute("employees", employees);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        return "paginated-index";
     }
 }
