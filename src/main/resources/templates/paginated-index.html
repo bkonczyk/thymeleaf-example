@@ -30,7 +30,7 @@
             <td th:text="${employee.getEmail()}"></td>
             <td th:text="${employee.getAge()}"></td>
             <td>
-                <a th:href="@{'update-employee/' + ${employee.id}}"
+                <a th:href="@{'/update-employee/' + ${employee.id}}"
                    class="btn btn-success btn-sm">Update</a>
                 <a th:href="@{'/delete-employee/' + ${employee.id}}"
                    class="btn btn-danger btn-sm">Delete</a>
