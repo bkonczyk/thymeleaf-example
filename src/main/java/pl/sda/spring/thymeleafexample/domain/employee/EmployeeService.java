@@ -18,4 +18,8 @@ public class EmployeeService {
     void addEmployee(Employee employee) {
         repository.save(employee);
     }
+
+    void deleteEmployee(Long id) {
+        repository.deleteById(id);
+    }
 }
