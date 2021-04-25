@@ -30,9 +30,16 @@ public class EmployeeController {
         return "new-employee";
     }
 
+    @GetMapping("/update-employee/{id}")
+    public String updateEmployeeForm(@PathVariable Long id, Model model) {
+        Employee employee = service.getOne(id);
+        model.addAttribute("employee", employee);
+        return "update-employee";
+    }
+
     @PostMapping("/save-employee")
     public String saveEmployee(@ModelAttribute Employee employee) {
-        service.addEmployee(employee);
+        service.saveEmployee(employee);
         return "redirect:/";
     }
 

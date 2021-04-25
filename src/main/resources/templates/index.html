@@ -23,17 +23,19 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="employee : ${employees}">
-                <td th:text="${employee.getId()}"></td>
-                <td th:text="${employee.getName()}"></td>
-                <td th:text="${employee.getSurname()}"></td>
-                <td th:text="${employee.getEmail()}"></td>
-                <td th:text="${employee.getAge()}"></td>
-                <td>
-                    <a class="btn btn-success btn-sm">Update</a>
-                    <a th:href="@{/delete-employee/{id}(id=${employee.id})}" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.getId()}"></td>
+            <td th:text="${employee.getName()}"></td>
+            <td th:text="${employee.getSurname()}"></td>
+            <td th:text="${employee.getEmail()}"></td>
+            <td th:text="${employee.getAge()}"></td>
+            <td>
+                <a th:href="@{'update-employee/' + ${employee.id}}"
+                   class="btn btn-success btn-sm">Update</a>
+                <a th:href="@{'/delete-employee/' + ${employee.id}}"
+                   class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

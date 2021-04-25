@@ -15,7 +15,11 @@ public class EmployeeService {
         return repository.findAll();
     }
 
-    void addEmployee(Employee employee) {
+    Employee getOne(Long id) {
+        return repository.findById(id).orElse(new Employee());
+    }
+
+    void saveEmployee(Employee employee) {
         repository.save(employee);
     }
 
