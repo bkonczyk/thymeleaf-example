@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -25,5 +27,11 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "new-employee";
+    }
+
+    @PostMapping("/save-employee")
+    public String saveEmployee(@ModelAttribute Employee employee) {
+        service.addEmployee(employee);
+        return "redirect:";
     }
 }
