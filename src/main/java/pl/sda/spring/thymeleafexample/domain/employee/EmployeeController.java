@@ -19,9 +19,12 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String viewAllEmployees(Model model) {
-        List<Employee> employees = service.getAll();
-        model.addAttribute("employees", employees);
-        return "index";
+        return findPaginated(1, model);
+
+//        INITIAL SOLUTION BELOW
+//        List<Employee> employees = service.getAll();
+//        model.addAttribute("employees", employees);
+//        return "index";
     }
 
     @GetMapping("/add-employee-form")
