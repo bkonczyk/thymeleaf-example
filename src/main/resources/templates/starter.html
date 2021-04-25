@@ -7,9 +7,7 @@
 <body>
 
 <h3>Starter page seems to work</h3>
-<h4>
-    <p th:text="${helloMsg}"></p>
-</h4>
+<p th:text="${helloMsg + ' ' + name.toUpperCase()}"></p>
 
 </body>
 </html>
