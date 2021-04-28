@@ -10,8 +10,13 @@
 <div class="container my-5">
     <h2 class="mb-3">Add new employee</h2>
     <hr>
-    <form th:action="@{/save-employee}" th:object="${employee}" method="post">
-        <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
+    <form action="#" th:action="@{/add-employee}" th:object="${employee}" method="post">
+        <div class="form-group col-md-6">
+            <label for="name" class="col-form-label">Name</label>
+            <input type="text" th:field="*{name}" placeholder="Name" id="name" class="form-control">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+        </div>
+
         <input type="text" th:field="*{surname}" placeholder="Surname" class="form-control mb-4 col-4">
         <input type="email" th:field="*{email}" placeholder="E-mail" class="form-control mb-4 col-4">
         <input type="text" th:field="*{pesel}" placeholder="Pesel" class="form-control mb-4 col-4">
@@ -20,7 +25,7 @@
         <button type="submit" class="btn btn-info">Save employee</button>
     </form>
     <hr>
-    <a th:href = "@{/}" class="btn btn-warning">Back</a>
+    <a th:href="@{/index}" class="btn btn-warning">Back</a>
 </div>
 </body>
 </html>
