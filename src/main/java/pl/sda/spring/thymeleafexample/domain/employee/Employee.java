@@ -1,5 +1,6 @@
 package pl.sda.spring.thymeleafexample.domain.employee;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Range;
